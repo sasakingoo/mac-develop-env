@@ -1,0 +1,25 @@
+- name: add PATH code
+  blockinfile:
+    dest: ~/.zprofile
+    insertafter: '^# PATH'
+    content: 'export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"'
+
+- name: source ~/.zprofile
+  shell: source ~/.zprofile
+
+# - name: install extentions
+#   shell: "code --install-extension {{ item }}"
+#   with_items:
+#     - redhat.java
+#     - vscjava.vscode-maven
+#     - vscjava.vscode-java-pack
+#     - vscjava.vscode-java-test
+#     - vscjava.vscode-java-debug
+#     - vscjava.vscode-java-dependency
+#     - georgewfraser.vscode-javac
+#     - ithildir.java-properties
+#     - shengchen.vscode-checkstyle
+#     - gabrielbb.vscode-lombok
+
+- name: install extentions
+  shell: code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
