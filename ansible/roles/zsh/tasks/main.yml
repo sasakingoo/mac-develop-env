@@ -3,6 +3,12 @@
     name: ['zsh', 'zsh-syntax-highlighting', 'zsh-completions']
     state: present
 
+- name: npm
+  npm:
+    name: pure-prompt
+    state: latest
+    global: yes
+
 - name: deploy ~/.zshrc
   copy:
     src: .zshrc
