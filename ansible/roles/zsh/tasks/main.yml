@@ -2,15 +2,18 @@
   homebrew:
     name: ['zsh', 'zsh-syntax-highlighting', 'zsh-completions']
     state: present
+  when: use_zsh
 
-- name: npm
+- name: install theme
   npm:
     name: pure-prompt
     state: latest
     global: yes
+  when: use_zsh
 
 - name: deploy ~/.zshrc
   copy:
     src: .zshrc
     dest: ~/.zshrc
     mode: 0644
+  when: use_zsh

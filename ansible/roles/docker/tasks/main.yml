@@ -1,0 +1,11 @@
+- name: install
+  homebrew_cask:
+    name: docker
+    state: present
+    install_options: "appdir=/Applications"
+    accept_external_apps: yes
+
+- name: install docker commands
+  homebrew:
+    name: ['docker-compose', 'docker-machine']
+    state: present

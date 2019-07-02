@@ -1,0 +1,17 @@
+- name: install
+  homebrew:
+    name: nodebrew
+    state: present
+  register: nodebrew_installed
+
+- name: setup
+  shell: nodebrew setup
+  when: nodebrew_installed is changed
+
+- name: install npm
+  shell: nodebrew install-binary stable
+  when: nodebrew_installed is changed
+
+- name: use stable npm
+  shell: nodebrew use stable
+  when: nodebrew_installed is changed

@@ -1,8 +1,16 @@
 - name: setup development environment for mac
   hosts: 127.0.0.1
   connection: local
+  vars:
+    use_zsh: true
   roles:
-    - role: zsh
-      tags: zsh
+    - role: nodebrew
+      tags: nodebrew
     - role: vscode
       tags: vscode
+    - role: docker
+      tags: docker
+    - role: google-chrome
+      tags: google-chrome
+    - role: zsh
+      tags: zsh
