@@ -1,4 +1,5 @@
 export PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export LANG=ja_JP.UTF-8
 
 plugins=(git zsh-syntax-highlighting zsh-completions)

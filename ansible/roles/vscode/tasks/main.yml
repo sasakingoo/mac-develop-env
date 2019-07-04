@@ -1,11 +1,3 @@
-- name: install vscode
-  homebrew_cask:
-    name: visual-studio-code
-    state: present
-    install_options: "appdir=/Applications"
-    accept_external_apps: yes
-  register: vscode_installed
-
 - name: add PATH for zsh
   block:
     - name: add PATH
@@ -18,7 +10,6 @@
       shell: source ~/.zprofile
 
   when:
-    - vscode_installed is changed
     - use_zsh
 
 - name: add PATH for bash
@@ -33,7 +24,6 @@
       shell: source ~/.bash_profile
 
   when:
-    - vscode_installed is changed
     - not use_zsh
 
 - name: install extentions
@@ -80,11 +70,17 @@
     - sdras.vue-vscode-snippets
     - redhat.vscode-xml
     - redhat.vscode-yaml
-  when: vscode_installed is changed
 
 - name: deploy settings.json
   template:
     src: settings.json.j2
     dest: '~/Library/Application Support/Code/User/settings.json'
     mode: 0644
-  when: vscode_installed is changed
+    backup: yes
+
+- name: deploy keybindings.json
+  copy:
+    src: keybindings.json
+    dest: '~/Library/Application Support/Code/User/keybindings.json'
+    mode: 0644
+    backup: yes

@@ -12,6 +12,10 @@
 brew install ansible
 ```
 
+- install visual studio code
+  - https://code.visualstudio.com/
+
+
 ## execute
 - use zsh
 ```
